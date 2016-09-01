@@ -20,7 +20,8 @@ class Form extends Accounts.ui.Form {
 			error,
 			message,
 			ready = true,
-			oauthServices
+			oauthServices,
+			formState
 		} = this.props;
 		return (
 			<form
@@ -33,8 +34,12 @@ class Form extends Accounts.ui.Form {
 				<Accounts.ui.Fields fields={fields}/>
 				<Accounts.ui.Buttons buttons={buttons}/>
 				<br/>
-				<h4>Or use</h4>
-				<Accounts.ui.SocialButtons oauthServices={oauthServices}/>
+				{ formState == STATES.SIGN_IN || formState == STATES.SIGN_UP ? (
+					 <Accounts.ui.PasswordOrService oauthServices={ oauthServices } />
+				 ) : null }
+				 { formState == STATES.SIGN_IN || formState == STATES.SIGN_UP ? (
+					 <Accounts.ui.SocialButtons oauthServices={ oauthServices } />
+				 ) : null }
 				<br/>
 				<Accounts.ui.FormMessage message={message}/>
 			</form>
