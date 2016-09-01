@@ -137,7 +137,6 @@ class SocialButtons extends Accounts.ui.SocialButtons {
 			oauthServices = {},
 			className = "social-buttons"
 		} = this.props;
-		console.log(oauthServices);
 		if (Object.keys(oauthServices).length > 0) {
 			return (
 				<div className={[className].join(' ')}>
