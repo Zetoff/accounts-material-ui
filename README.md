@@ -2,7 +2,7 @@
 
 Current version 0.0.1
 
-![React Accounts UI for using Material-UI](./accounts-material-ui.png)
+![React Accounts UI for using Material-UI](https://raw.githubusercontent.com/zetoff/accounts-material-ui/master/accounts-material-ui.png)
 TODO: add picture
 
 ### Based on and extends std:accounts-ui
