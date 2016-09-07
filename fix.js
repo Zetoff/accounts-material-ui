@@ -1,3 +1,6 @@
+// Keep this until issue with std:account-ui is fixed
+// https://github.com/studiointeract/accounts-ui/issues/60
+
 import {Accounts, STATES} from 'meteor/std:accounts-ui';
 
 class Field extends Accounts.ui.Field {

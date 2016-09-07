@@ -1,5 +1,5 @@
 import React from 'react';
-import {Accounts, STATES} from './fix.js';
+import {Accounts, STATES} from './fix.js'; // TODO: back to normal once std:accounts-ui is fixed
 import {RaisedButton, FlatButton, FontIcon, TextField, Divider} from 'material-ui';
 import {socialButtonsColors, socialButtonIcons} from './social_buttons_config';
 
