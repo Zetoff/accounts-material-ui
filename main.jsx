@@ -1,5 +1,5 @@
 import React from 'react';
-import {Accounts, STATES} from 'meteor/std:accounts-ui';
+import {Accounts, STATES} from './fix.js'; // TODO: back to normal once std:accounts-ui is fixed
 import {RaisedButton, FlatButton, FontIcon, TextField, Divider} from 'material-ui';
 import {socialButtonsColors, socialButtonIcons} from './social_buttons_config';
 
@@ -20,7 +20,8 @@ class Form extends Accounts.ui.Form {
 			error,
 			message,
 			ready = true,
-			oauthServices
+			oauthServices,
+			formState
 		} = this.props;
 		return (
 			<form
@@ -33,8 +34,12 @@ class Form extends Accounts.ui.Form {
 				<Accounts.ui.Fields fields={fields}/>
 				<Accounts.ui.Buttons buttons={buttons}/>
 				<br/>
-				<h4>Or use</h4>
-				<Accounts.ui.SocialButtons oauthServices={oauthServices}/>
+				{ formState == STATES.SIGN_IN || formState == STATES.SIGN_UP ? (
+					 <Accounts.ui.PasswordOrService oauthServices={ oauthServices } />
+				 ) : null }
+				 { formState == STATES.SIGN_IN || formState == STATES.SIGN_UP ? (
+					 <Accounts.ui.SocialButtons oauthServices={ oauthServices } />
+				 ) : null }
 				<br/>
 				<Accounts.ui.FormMessage message={message}/>
 			</form>
@@ -137,7 +142,6 @@ class SocialButtons extends Accounts.ui.SocialButtons {
 			oauthServices = {},
 			className = "social-buttons"
 		} = this.props;
-		console.log(oauthServices);
 		if (Object.keys(oauthServices).length > 0) {
 			return (
 				<div className={[className].join(' ')}>
