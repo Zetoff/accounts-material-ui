@@ -1,5 +1,5 @@
 import React from 'react';
-import {Accounts, STATES} from 'meteor/std:accounts-ui';
+import {Accounts, STATES} from './fix.js';
 import {RaisedButton, FlatButton, FontIcon, TextField, Divider} from 'material-ui';
 import {socialButtonsColors, socialButtonIcons} from './social_buttons_config';
 
