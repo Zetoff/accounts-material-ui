@@ -69,7 +69,9 @@ class Button extends Accounts.ui.Button {
 					: null}
 					className={className}
 					onTouchTap={onClick}
-					disabled={disabled}/>
+					disabled={disabled}
+					style={{marginRight: '5px'}}
+					/>
 			)
 			: (
 				<RaisedButton
@@ -81,7 +83,9 @@ class Button extends Accounts.ui.Button {
 					type={type}
 					className={className}
 					onTouchTap={onClick}
-					disabled={disabled}/>
+					disabled={disabled}
+					style={{marginRight: '5px'}}
+					/>
 			)
 	}
 }
