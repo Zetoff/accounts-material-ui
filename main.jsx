@@ -1,5 +1,5 @@
 import React from 'react';
-import {Accounts, STATES} from './fix.js'; // TODO: back to normal once std:accounts-ui is fixed
+import {Accounts, STATES} from 'meteor/std:accounts-ui';
 import {RaisedButton, FlatButton, FontIcon, TextField, Divider} from 'material-ui';
 import {socialButtonsColors, socialButtonIcons} from './social_buttons_config';
 
