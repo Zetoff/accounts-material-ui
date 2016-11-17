@@ -41,7 +41,7 @@ class Form extends Accounts.ui.Form {
 					 <Accounts.ui.SocialButtons oauthServices={ oauthServices } />
 				 ) : null }
 				<br/>
-				<Accounts.ui.FormMessage message={message}/>
+				<Accounts.ui.FormMessage {...message}/>
 			</form>
 		);
 	}
