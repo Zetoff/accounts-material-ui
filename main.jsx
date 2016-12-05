@@ -14,38 +14,43 @@ import {green500, red500, yellow600, lightBlue600} from 'material-ui/styles/colo
  */
 
 class Form extends Accounts.ui.Form {
-	render() {
-		const {
-			fields,
-			buttons,
-			error,
-			message,
-			ready = true,
-			oauthServices,
-			formState
-		} = this.props;
-		return (
-			<form
-				className={ready
-				? "ready"
-				: null}
-				onSubmit={evt => evt.preventDefault()}
-				className="accounts-ui">
 
-				<Accounts.ui.Fields fields={fields}/>
-				<Accounts.ui.Buttons buttons={buttons}/>
-				<br/>
-				{ formState == STATES.SIGN_IN || formState == STATES.SIGN_UP ? (
-					 <Accounts.ui.PasswordOrService oauthServices={ oauthServices } />
-				 ) : null }
-				 { formState == STATES.SIGN_IN || formState == STATES.SIGN_UP ? (
-					 <Accounts.ui.SocialButtons oauthServices={ oauthServices } />
-				 ) : null }
-				<br/>
-				<Accounts.ui.FormMessage {...message}/>
-			</form>
-		);
-	}
+  render() {
+    const {
+      hasPasswordService,
+      oauthServices,
+      fields,
+      buttons,
+      error,
+      message,
+      ready = true,
+      className,
+      formState
+    } = this.props;
+    return (
+      <form
+        ref={(ref) => this.form = ref}
+        className={["accounts", className].join(' ')}>
+        {Object.keys(fields).length > 0
+          ? (<Accounts.ui.Fields fields={fields}/>)
+          : null}
+        <Accounts.ui.Buttons buttons={buttons}/>
+        <br/>
+        {formState == STATES.SIGN_IN || formState == STATES.SIGN_UP
+          ? (
+            <div className="or-sep">
+              <Accounts.ui.PasswordOrService oauthServices={oauthServices}/>
+            </div>
+          )
+          : null}
+        {formState == STATES.SIGN_IN || formState == STATES.SIGN_UP
+          ? (<Accounts.ui.SocialButtons oauthServices={oauthServices}/>)
+          : null}
+        <br/>
+        <Accounts.ui.FormMessage {...message}/>
+      </form>
+    );
+  }
 }
 
 class Buttons extends Accounts.ui.Buttons {}
