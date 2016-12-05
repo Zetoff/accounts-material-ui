@@ -1,7 +1,5 @@
 # React Accounts UI for using Material-UI
 
-Current version 0.0.3
-
 ![React Accounts UI for using Material-UI](https://raw.githubusercontent.com/Zetoff/accounts-material-ui/master/accounts-material-ui.png)
 
 ### Based on and extends std:accounts-ui
