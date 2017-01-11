@@ -13,6 +13,12 @@ import {green500, red500, yellow600, lightBlue600} from 'material-ui/styles/colo
  * };
  */
 
+class LoginForm extends Accounts.ui.LoginForm {
+  componentWillMount() {
+    // FIXME hack to solve issue #18
+  }
+}
+
 class Form extends Accounts.ui.Form {
 
   render() {
@@ -250,6 +256,7 @@ class FormMessage extends Accounts.ui.FormMessage {
 // Notice! Accounts.ui.LoginForm manages all state logic at the moment, so avoid overwriting this
 // one, but have a look at it and learn how it works. And pull requests altering how that works are
 // welcome. Alter provided default unstyled UI.
+Accounts.ui.LoginForm = LoginForm;
 Accounts.ui.Form = Form;
 Accounts.ui.Buttons = Buttons;
 Accounts.ui.Button = Button;
