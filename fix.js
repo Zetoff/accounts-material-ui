@@ -4,22 +4,24 @@
 import {Accounts, STATES} from 'meteor/std:accounts-ui';
 
 class Field extends Accounts.ui.Field {
-	triggerUpdate() {
-		const {onChange} = this.props
-		let value = this.input.value;
+  triggerUpdate() {
+  		const {onChange} = this.props;
+      let value;
+  		if(this.input) {
+        value = this.input.value;
+      }
+  		if (value === undefined) {
+  			value = '';
+  		} else {
+  			// do nothing
+  		}
 
-		if (value === undefined) {
-			value = '';
-		} else {
-			// do nothing
-		}
-
-		if (this.input) {
-			onChange({target: {
-					value
-				}})
-		}
-	}
+  		if (this.input) {
+  			onChange({target: {
+  					value
+  				}})
+  		}
+  	}
 }
 
 Accounts.ui.Field = Field;
