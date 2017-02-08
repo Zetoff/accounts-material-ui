@@ -1,6 +1,7 @@
 import React from 'react';
+import { Meteor } from 'meteor/meteor';
 import {Accounts, STATES} from './fix.js'; // TODO: back to normal once std:accounts-ui is fixed
-import {RaisedButton, FlatButton, FontIcon, TextField, Divider, Snackbar} from 'material-ui';
+import {RaisedButton, FlatButton, FontIcon, TextField, Divider, Snackbar, CircularProgress} from 'material-ui';
 import {socialButtonsColors, socialButtonIcons} from './social_buttons_config';
 import {green500, red500, yellow600, lightBlue600} from 'material-ui/styles/colors';
 
@@ -31,31 +32,36 @@ class Form extends Accounts.ui.Form {
       message,
       ready = true,
       className,
-      formState
+      formState,
     } = this.props;
-    return (
-      <form
-        ref={(ref) => this.form = ref}
-        className={["accounts", className].join(' ')}>
-        {Object.keys(fields).length > 0
-          ? (<Accounts.ui.Fields fields={fields}/>)
-          : null}
-        <Accounts.ui.Buttons buttons={buttons}/>
-        <br/>
-        {formState == STATES.SIGN_IN || formState == STATES.SIGN_UP
-          ? (
-            <div className="or-sep">
-              <Accounts.ui.PasswordOrService oauthServices={oauthServices}/>
-            </div>
-          )
-          : null}
-        {formState == STATES.SIGN_IN || formState == STATES.SIGN_UP
-          ? (<Accounts.ui.SocialButtons oauthServices={oauthServices}/>)
-          : null}
-        <br/>
-        <Accounts.ui.FormMessage {...message}/>
-      </form>
-    );
+    return (Meteor.loggingIn())
+        ?
+          <div style={{height: '30vh', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+            <CircularProgress />
+            <Accounts.ui.FormMessage {...message}/>
+          </div>
+        :
+          <form
+            ref={(ref) => this.form = ref}
+            className={["accounts", className].join(' ')}>
+            {Object.keys(fields).length > 0
+               ? (<Accounts.ui.Fields fields={fields}/>)
+              : null}
+            <Accounts.ui.Buttons buttons={buttons}/>
+             <br/>
+             {formState == STATES.SIGN_IN || formState == STATES.SIGN_UP
+               ? (
+                 <div className="or-sep">
+                   <Accounts.ui.PasswordOrService oauthServices={oauthServices}/>
+                 </div>
+               )
+               : null}
+             {formState == STATES.SIGN_IN || formState == STATES.SIGN_UP
+               ? (<Accounts.ui.SocialButtons oauthServices={oauthServices}/>)
+               : null}
+             <br/>
+            <Accounts.ui.FormMessage {...message}/>
+          </form>
   }
 }
 
