@@ -1,6 +1,6 @@
 Package.describe({
   name: 'zetoff:accounts-material-ui',
-  version: '0.0.12',
+  version: '0.0.13',
   // Brief, one-line summary of the package.
   summary: 'Material-UI - Accounts UI for React in Meteor',
   // URL to the Git repository containing the source code for this package.
