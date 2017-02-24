@@ -26,6 +26,10 @@ export const socialButtonsColors = {
 	weibo: {
 		background: '#faf6f1',
 		label: '#000'
+	},
+	pinterest: {
+		background: '#bd081c',
+		label: '#fff'
 	}
 }
 
