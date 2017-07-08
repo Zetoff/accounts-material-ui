@@ -1,5 +1,5 @@
 import React from 'react';
-import {Accounts, STATES} from './fix.js'; // TODO: back to normal once std:accounts-ui is fixed
+import { Accounts, STATES } from 'meteor/std:accounts-ui';
 import {RaisedButton, FlatButton, FontIcon, TextField, Divider, Snackbar} from 'material-ui';
 import {socialButtonsColors, socialButtonIcons} from './social_buttons_config';
 import {green500, red500, yellow600, lightBlue600} from 'material-ui/styles/colors';
@@ -13,11 +13,6 @@ import {green500, red500, yellow600, lightBlue600} from 'material-ui/styles/colo
  * };
  */
 
-class LoginForm extends Accounts.ui.LoginForm {
-  componentWillMount() {
-    // FIXME hack to solve issue #18
-  }
-}
 
 class Form extends Accounts.ui.Form {
 
@@ -102,6 +97,7 @@ class Button extends Accounts.ui.Button {
 	}
 }
 class Fields extends Accounts.ui.Fields {
+
 	render() {
 		let {
 			fields = {},
@@ -118,6 +114,13 @@ class Fields extends Accounts.ui.Fields {
 	}
 }
 class Field extends Accounts.ui.Field {
+	//TODO: should look at why this.input.value is undefined :/
+  triggerUpdate() {
+    const { onChange } = this.props;
+    if (this.input && onChange) {
+      onChange({ target: { value: this.input.value ? this.input.value : '' } });
+    }
+  }
 	render() {
 		const {
 			id,
@@ -256,7 +259,7 @@ class FormMessage extends Accounts.ui.FormMessage {
 // Notice! Accounts.ui.LoginForm manages all state logic at the moment, so avoid overwriting this
 // one, but have a look at it and learn how it works. And pull requests altering how that works are
 // welcome. Alter provided default unstyled UI.
-Accounts.ui.LoginForm = LoginForm;
+// Accounts.ui.LoginForm = LoginForm;
 Accounts.ui.Form = Form;
 Accounts.ui.Buttons = Buttons;
 Accounts.ui.Button = Button;
