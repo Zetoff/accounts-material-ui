@@ -18,7 +18,7 @@ const styles = () => ({
     color: '#dd4b39',
   },
   'meteor-developer': {
-    colorColor: '#bb0000',
+    color: '#bb0000',
   },
   meetup: {
     color: '#ED1C40',
