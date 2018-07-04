@@ -13,12 +13,9 @@ Package.describe({
 Package.onUse(function(api) {
   api.versionsFrom('1.4.1.1');
   api.use('ecmascript');
-	api.use('std:accounts-ui@1.2.17');
-	api.use('tmeasday:check-npm-versions@0.3.1');
+	api.use('std:accounts-ui@1.2.23');
 
 	api.imply('session');
-
-	api.addFiles('check_npm.js', ['client', 'server']);
 
   api.mainModule('main.jsx');
 });
