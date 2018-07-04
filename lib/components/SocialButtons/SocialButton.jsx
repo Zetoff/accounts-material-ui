@@ -3,9 +3,7 @@ import MuiButton from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
-  button: {
-    marginBottom: theme.spacing.unit,
-  },
+  button: {},
   icon: {
     marginRight: theme.spacing.unit,
   },
